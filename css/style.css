@@ -60,8 +60,8 @@ $breakpoint argument choices
     left: 15% !important; }
   .grid--10x12 {
     height: 120rem !important;
-    grid-template-rows: repeat(15, 1fr);
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(15, 1fr) !important;
+    grid-template-columns: repeat(12, 1fr) !important;
     margin-bottom: 1rem; }
   .grid__item--3,
   .grid__item--6a {
