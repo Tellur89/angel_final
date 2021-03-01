@@ -33,6 +33,8 @@ $breakpoint argument choices
     margin-right: 5rem !important; } }
 
 @media (max-width: 992px) {
+  .big-screen-only {
+    display: none; }
   .icons-social,
   .text--phone {
     display: none !important; }
@@ -49,15 +51,10 @@ $breakpoint argument choices
     justify-content: center; }
     .icons-social-toggle:not(:last-child) {
       margin: 20rem; }
-  .marj,
-  .marj2 {
-    height: 30%; }
-  .marj {
-    top: 110% !important;
-    left: 65.5% !important; }
-  .marj2 {
-    top: 110% !important;
-    left: 15% !important; }
+  .hero-box__text {
+    top: 35% !important;
+    left: 15% !important;
+    width: 70% !important; }
   .grid--10x12 {
     height: 120rem !important;
     grid-template-rows: repeat(15, 1fr) !important;
@@ -159,7 +156,7 @@ html {
       font-size: 40%; } }
 
 body {
-  background-image: linear-gradient(to right bottom, rgba(247, 247, 247, 0.7), rgba(247, 247, 247, 0.7)), url(../img/background-big.jpg);
+  background-image: linear-gradient(to right bottom, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url(../img/background-big.jpg);
   background-size: auto; }
 
 a,
@@ -233,6 +230,20 @@ body {
   .text--sml {
     font-family: "Montserrat", sans-serif;
     font-size: 1.8rem; }
+
+.link-title {
+  font-family: "Cinzel", serif;
+  font-size: 2.6rem;
+  letter-spacing: 5px;
+  font-weight: 600;
+  color: white !important;
+  text-transform: uppercase;
+  height: 100% !important;
+  width: 100% !important;
+  z-index: 99999; }
+  @media (max-width: 37.5em) {
+    .link-title {
+      font-size: 2.4rem; } }
 
 .small-title {
   text-align: center;
@@ -339,6 +350,15 @@ body {
 .tile {
   height: 100%; }
 
+.tile:hover > .overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #000;
+  opacity: 0.5;
+  z-index: -99;
+  transition: all .8s; }
+
 .tile,
 .nav-item {
   cursor: pointer;
@@ -423,18 +443,6 @@ body {
         display: none; } }
   .nav-item:hover::after {
     transform: scaleY(1); }
-
-.link-title {
-  font-family: "Cinzel", serif;
-  font-size: 3rem;
-  font-weight: 600;
-  color: white !important;
-  text-transform: uppercase;
-  height: 100% !important;
-  width: 100% !important; }
-  @media (max-width: 37.5em) {
-    .link-title {
-      font-size: 2.6rem; } }
 
 .icons-social {
   width: 15rem;
@@ -635,51 +643,37 @@ body {
   grid-template-rows: repeat(10, 1fr);
   grid-template-columns: repeat(12, 1fr); }
 
-.grid--16x12 {
-  height: 90rem !important;
-  grid-template-rows: repeat(4, 1fr);
-  grid-template-columns: repeat(12, 1fr);
-  margin-bottom: 1rem !important; }
-
 .grid {
   display: grid;
   grid-gap: 1rem;
-  height: 80rem;
+  height: 100rem;
   margin-bottom: 5rem; }
   .grid__item {
     width: 100%;
     height: 100%;
     background-size: cover;
-    background-position: center; }
+    background-position: center;
+    text-align: center; }
     .grid__item--1 {
       grid-area: 1/1/4/5;
       background-image: linear-gradient(rgba(104, 117, 130, 0.2), rgba(104, 117, 130, 0.2)), url(../img/img1.jpg); }
     .grid__item--2 {
       grid-area: 1/5/4/9;
-      background-image: linear-gradient(rgba(4, 34, 95, 0.3), rgba(4, 34, 95, 0.5), rgba(4, 34, 95, 0.3)), url(../img/img2.jpg);
+      background-image: url(../img/img2.jpg);
       background-size: 100% 100% !important; }
     .grid__item--3 {
-      grid-area: 1/9/4/-1; }
-      .grid__item--3-video {
-        padding: 0;
-        height: 100%;
-        width: 100%;
-        object-fit: cover !important; }
+      grid-area: 1/9/3/-1;
+      background-image: url(../img/img3.jpg); }
     .grid__item--4 {
       grid-area: 4/1/7/4;
-      background-image: url(../img/img3.jpg); }
+      background-image: url(../img/img4.jpg); }
     .grid__item--5 {
-      grid-area: 4/4/7/7;
-      background-image: linear-gradient(rgba(4, 34, 95, 0.3), rgba(4, 34, 95, 0.5), rgba(4, 34, 95, 0.3)), url(../img/img4.jpg); }
+      grid-area: 4/4/7/9;
+      background-image: url(../img/img5.jpg); }
     .grid__item--6 {
-      grid-area: 4/7/7/11;
-      background-image: linear-gradient(rgba(4, 34, 95, 0.3), rgba(4, 34, 95, 0.5), rgba(4, 34, 95, 0.3)), url(../img/hero4.jpg);
+      grid-area: 3/9/7/-1;
+      background-image: url(../img/img6.jpg);
       background-size: 100% 100%; }
-    .grid__item--6a {
-      grid-area: 4/11/7/-1;
-      background-image: url(../img/angel.jpg);
-      background-size: cover;
-      background-position-x: -20px; }
     .grid__item--7 {
       grid-area: 7/1/11/7; }
     .grid__item--8 {
@@ -760,7 +754,9 @@ body {
   padding: 3.5rem 3.5rem 1.5rem 3.5rem;
   width: 100%;
   display: flex;
-  justify-content: center; }
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
 
 .title--phone-n-order {
   width: 100%;
@@ -769,20 +765,20 @@ body {
   align-items: center; }
 
 .hero-box {
-  width: 100%;
-  height: 70rem;
+  width: 100% !important;
+  height: 70rem !important;
   display: flex;
   justify-content: center;
   position: relative; }
   .hero-box__pic {
-    height: 70rem;
-    width: 100%; }
+    height: 70rem !important;
+    width: 100% !important; }
   .hero-box__text {
     position: absolute;
-    top: 3%;
-    left: 10%;
-    background-image: linear-gradient(to right bottom, rgba(186, 206, 227, 0.8), rgba(186, 206, 227, 0.8));
-    width: 80%;
+    top: 55%;
+    left: 12%;
+    background-image: linear-gradient(to right bottom, rgba(237, 214, 95, 0.8), rgba(237, 214, 95, 0.8));
+    width: 60%;
     height: min-content;
     border-radius: 10px;
     text-align: center;
@@ -1019,40 +1015,13 @@ tr {
     .card {
       width: 50rem !important; } }
 
-.marj {
-  opacity: 0.3;
-  position: absolute;
-  top: 105%;
-  left: 63.5%;
-  z-index: -1; }
-  @media (max-width: 37.5em) {
-    .marj {
-      display: none; } }
-
-.marj2 {
-  opacity: 0.3;
-  position: absolute;
-  top: 105%;
-  left: 20%;
-  transform: scaleX(-1);
-  z-index: -1; }
-  @media (max-width: 37.5em) {
-    .marj2 {
-      display: none; } }
-
-.marj3 {
-  opacity: 0.3;
-  position: absolute;
-  top: 55%;
-  left: 78%;
-  z-index: -1;
-  transform: rotate(20deg);
-  height: 50%; }
-  @media (max-width: 75em) {
-    .marj3 {
-      display: none; } }
-
 .feed {
   padding-bottom: 10rem;
   width: 100%;
   height: 100%; }
+
+#pixlee_container {
+  width: 100%;
+  height: 60rem !important;
+  overflow-y: scroll;
+  overflow-x: hidden; }
