@@ -14,7 +14,7 @@ if (isset($_POST['submit'])) {
 
    mail($mailTo, $whatPosition, $txt, $headers);
 
-//    header("Location: index.html?mailSent");
+   header("Location: index.html");
 };
 
 ?>
