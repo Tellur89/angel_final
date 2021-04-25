@@ -10,9 +10,9 @@ if (isset($_POST['submit'])) {
 
    $mailTo = "boorzak@o2.pl";
    $headers = "ANGEL AND HARP from: ".$mailFrom;
-   $txt = "You have received a job application form from ".$name.".\n\n".$whatPosition.$cv.$about;
+   $txt = "You have received a job application form from ".$name.".\n\n".$about;
 
    mail($mailTo, $whatPosition, $txt, $headers);
 
-   header("Location: index.html?mailSent");
+//    header("Location: index.html?mailSent");
 }
